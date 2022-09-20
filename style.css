@@ -1,3 +1,87 @@
 *{
-    box-sizing: border-box;
+    box-sizing: border-box;  
+}
+
+:root{
+    --cell: 100px;
+    --mark: calc(var(--cell) * 0.9);
+}
+
+body{
+    margin: 0;
+}
+
+.gameboard {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+    width: var(--cell);
+    height: var(--cell);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3){
+    border-top: 0;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7){
+    border-left: 0;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9){
+    border-right: 0;
+}
+
+.cell:nth-child(7), 
+.cell:nth-child(8),
+.cell:nth-child(9){
+    border-bottom: 0;
+}
+
+.cell.x::before,
+.cell.x::after{
+    content: '';
+    position: absolute;
+    background-color: black;
+    width: calc(var(--mark)* .18);
+    height: var(--mark);
+}
+
+.cell.x::before{
+    transform: rotate(45deg);
+}
+
+.cell.x::after{
+    transform: rotate(135deg);
+}
+
+.cell.o::before,
+.cell.o::after{
+    content: '';
+    position: absolute;
+    width: var(--mark);
+    height: var(--mark);
+    background-color: black;
+    border-radius: 50px;
+}
+
+.cell.o::after{
+    background-color: white;
+    width: calc(var(--mark) * .7);
+    height: calc(var(--mark) * .7);
 }
