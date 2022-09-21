@@ -85,3 +85,18 @@ body{
     width: calc(var(--mark) * .7);
     height: calc(var(--mark) * .7);
 }
+
+.win-message {
+    background-color: rgba(0, 0, 0, 0.76);
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top:0;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    font-size: 30px;
+    font-family: Arial;
+    visibility: hidden;
+}

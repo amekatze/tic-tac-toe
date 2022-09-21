@@ -18,11 +18,13 @@ const tictactoe = (function(){
         [0, 4, 8],
         [2, 4, 6]
     ]
-
+    // PLAYER
     const player1 = Player('x');
     const player2 = Player('o');
     let activePlayer = player1;
 
+    // DOM -- BOARD
+    const winMessage = document.getElementById('win-message')
     const cells = document.querySelectorAll(".cell")
     let board = Array.from(cells)
     cells.forEach(cell => cell.addEventListener('click', playerMove, {once :true}))
@@ -30,6 +32,8 @@ const tictactoe = (function(){
         this.classList.add(activePlayer.symbol)
         checkWin(this)
     }
+
+
     function switchTurns(){ 
     return activePlayer = activePlayer == player1 ? player2 : player1;
     }
@@ -37,7 +41,10 @@ const tictactoe = (function(){
     function checkWin(i){
         activePlayer.combination.push(board.indexOf(i))
         const win = winningCombinations.some(comb => comb.every(pcomb => activePlayer.combination.includes(pcomb)))
-        if (win == true){ console.log(`${activePlayer.symbol} wins!`)}
+        if (win == true){ 
+            winMessage.style.visibility = 'visible'
+            winMessage.innerHTML+= `${activePlayer.symbol} wins!`
+        }
         else { switchTurns() };
 }
 })();
