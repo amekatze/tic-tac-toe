@@ -5,15 +5,41 @@
 :root{
     --cell: 100px;
     --mark: calc(var(--cell) * 0.9);
+    --board: rgb(255, 255, 255);
+    --mark-col: rgb(55, 49, 72);
 }
 
 body{
     margin: 0;
 }
 
-.gameboard {
-    width: 100vw;
+.container{
     height: 100vh;
+    width: 100vw;
+    background-color: rgb(81, 76, 95);
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    box-shadow: 0 2px 20px 20px black;
+}
+
+.playerselect {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+
+.playerselect button {
+    height: 40px;
+    width: 80px;
+}
+
+.gameboard {
+    background-color: var(--board);
+    border-radius: 10px;
+    width: 320px;
+    height: 320px;
     display: grid;
     justify-content: center;
     align-content: center;
@@ -23,7 +49,7 @@ body{
 .cell {
     width: var(--cell);
     height: var(--cell);
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.549);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,8 +83,8 @@ body{
 .cell.x::after{
     content: '';
     position: absolute;
-    background-color: black;
-    width: calc(var(--mark)* .18);
+    background-color: var(--mark-col);
+    width: calc(var(--mark)* .10);
     height: var(--mark);
 }
 
@@ -74,14 +100,14 @@ body{
 .cell.o::after{
     content: '';
     position: absolute;
-    width: var(--mark);
-    height: var(--mark);
-    background-color: black;
+    width: calc(var(--mark)* .9);
+    height: calc(var(--mark)* .9);
+    background-color: var(--mark-col);
     border-radius: 50px;
 }
 
 .cell.o::after{
-    background-color: white;
+    background-color: var(--board);
     width: calc(var(--mark) * .7);
     height: calc(var(--mark) * .7);
 }
